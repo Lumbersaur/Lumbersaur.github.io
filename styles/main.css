@@ -1,6 +1,6 @@
 html {
     height: 100%;
-    font-size:100%
+    font-size:100%;
 } 
 
 body {
@@ -25,7 +25,7 @@ body.landing {
 
 .hero-content {
     position: relative;
-    min-height:  600px;
+    min-height: 600px;
     background-image: url(../assets/images/bloc_jams_bg.jpg);
     background-repeat: no-repeat;
     background-position: center center;
