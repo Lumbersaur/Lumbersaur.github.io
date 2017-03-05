@@ -72,7 +72,7 @@ album.view.details .album-view-release-info {
     background-color: rgb(210, 40, 123);
 }
 
-/album-song-button span {
+.album-song-button span {
     line-height: 28px;
 }
 
