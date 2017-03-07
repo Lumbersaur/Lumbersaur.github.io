@@ -28,31 +28,48 @@ var albumMarconi = {
         ]
     };
 
+var albumFuzzy = {
+        title: 'The Bear',
+        artist: 'Fuzzy Wuzzy',
+        label: 'Too Cold Records',
+        year: '1995',
+        albumArtUrl: 'assets/images/album_covers/22.fuzzywuzzy.jpg',
+        songs: [
+            { title: 'Was He?', duration: '2:11' },
+            { title: 'The Bear With No Hair', duration: '4:44' },
+            { title: 'Fuzzy Feelings', duration: '2:52'},
+            { title: 'Wuzzy, Wuzzy Worries', duration: '3:31' },
+            { title: 'Whats all the Fuzz?', duration: '2:41'}
+        ]
+    };
+
 var createSongRow = function (songNumber, songName, songLength) {
     var template =
-        '<tr class="album-view-song-item">'
-        + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
-        + '  <td class="song-item-title">' + songName + '</td>'
-        + '  <td class="song-item-duration">' + songLength + '</td>'
-        + '</tr>';
+            '<tr class="album-view-song-item">'
+            + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
+            + '  <td class="song-item-title">' + songName + '</td>'
+            + '  <td class="song-item-duration">' + songLength + '</td>'
+            + '</tr>';
     
     return template;
     
 };
 
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+
 var setCurrentAlbum = function (album) {
-    
-    var albumTitle = document.getElementsByClassName('album-view-title')[0];
-    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
     
     albumTitle.firstChild.nodeValue = album.title;
     albumArtist.firstChild.nodeValue = album.artist;
     albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
     albumImage.setAttribute('src', album.albumArtUrl);
     albumSongList.innerHTML = '';
+    
+    
     
     for (var i = 0; i < album.songs.length; i++) {
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
@@ -99,7 +116,7 @@ var clickHandler = function(targetElement) {
          currentlyPlayingSong = null;
      } else if (currentlyPlayingSong !== songItem.getAttribute('data-song-number')) {
          var currentlyPlayingSongElement = document.querySelector('[data-song-number="' + currentlyPlayingSong + '"]');
-         currentlyPlayingSongElement.innerHTML = currentlyPlayingSongElement.getAttribute('data-song-number');
+         currentlyPlayingSongElement.innerHTML =    currentlyPlayingSongElement.getAttribute('data-song-number');
          songItem.innerHTML = pauseButtonTemplate;
          currentlyPlayingSong = songItem.getAttribute('data-song-number');
      }
@@ -114,9 +131,22 @@ var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause">
 
 var currentlyPlayingSong = null;
 
- window.onload = function() {
-     setCurrentAlbum(albumPicasso);
+window.onload = function() {
+    setCurrentAlbum(albumPicasso);
      
+    var albums = [albumPicasso, albumMarconi, albumFuzzy];
+    var index = 1;
+    albumImage.addEventListener("click", function(event) {
+        setCurrentAlbum(albums[index]);
+        index++;
+        if (index == albums.length) {
+            index = 0;
+        }
+    });
+};
+
+albumImage.onload = function () {
+    
      songListContainer.addEventListener('mouseover', function(event) {
          if (event.target.parentElement.className === 'album-view-song-item') {
              var songItem = getSongItem(event.target);
@@ -141,4 +171,4 @@ var currentlyPlayingSong = null;
              clickHandler(event.target);
          });
      }
-};
+}
