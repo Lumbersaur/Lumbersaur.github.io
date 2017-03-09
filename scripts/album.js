@@ -148,6 +148,8 @@ var nextSong = function() {
     
     updatePlayerBarSong();
     
+    $('.main-controls .play-pause').html(playerBarPauseButton);
+    
     var lastSongNumber = parseInt(getLastSongNumber(currentSongIndex));
     var $nextSongNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
     var $lastSongNumberCell = getSongNumberCell(lastSongNumber);
