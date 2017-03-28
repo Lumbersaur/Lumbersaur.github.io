@@ -60,25 +60,24 @@ var createSongRow = function (songNumber, songName, songLength) {
         } 
     };
     
-    var onHover = function(event) {
+    var hoverHandler = function(event) {
         var songNumberContainer = $(this).find('.song-item-number');
         var songNumber = parseInt(songNumberContainer.attr('data-song-number'));
            
         if (songNumber !== currentlyPlayingSongNumber) {
             songNumberContainer.html(playButtonTemplate);
         };
-    };
-    var offHover = function(event){
-        var songNumberContainer = $(this).find('.song-item-number');
-        var songNumber = parseInt(songNumberContainer.attr('data-song-number'));
         
-        if (songNumber !== currentlyPlayingSongNumber) {
+        $(this).mouseleave( function () {
+            if (songNumber !== currentlyPlayingSongNumber) {
             songNumberContainer.html(songNumber);
         };
+        });
     };
     
+    
     $row.find('.song-item-number').click(clickHandler);
-    $row.hover(onHover, offHover);
+    $row.hover(hoverHandler);
     return $row;
     
 };
