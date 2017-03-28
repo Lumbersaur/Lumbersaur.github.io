@@ -62,10 +62,10 @@ var createSongRow = function (songNumber, songName, songLength) {
     var onHover = function(event) {
         var songNumberContainer = $(this).find('.song-item-number');
         var songNumber = parseInt(songNumberContainer.attr('data-song-number'));
-        
+           
         if (songNumber !== currentlyPlayingSongNumber) {
             songNumberContainer.html(playButtonTemplate);
-        }
+        };
     };
     var offHover = function(event){
         var songNumberContainer = $(this).find('.song-item-number');
@@ -73,13 +73,12 @@ var createSongRow = function (songNumber, songName, songLength) {
         
         if (songNumber !== currentlyPlayingSongNumber) {
             songNumberContainer.html(songNumber);
-        }
+        };
     };
     
     $row.find('.song-item-number').click(clickHandler);
     $row.hover(onHover, offHover);
     return $row;
-    
     
 };
 
@@ -201,12 +200,21 @@ $(document).ready(function() {
     $nextButton.click(nextSong);
 
     var albums = [albumPicasso, albumMarconi, albumFuzzy];
-    var index = 1;
+    var albumIndex = 1;
     $albumImage.click(function(event) {
-        setCurrentAlbum(albums[index]);
-        index++;
-        if (index == albums.length) {
-            index = 0;
+        
+        setCurrentAlbum(albums[albumIndex]);
+        albumIndex++;
+        if (albumIndex == albums.length) {
+            albumIndex = 0;
         }
+        currentSoundFile.stop();
+        currentlyPlayingSongNumber = null;
+        $('.currently-playing .song-name').text(" ");
+        $('.currently-playing .artist-name').text(" ");
+        $('.currently-playing .artist-song-mobile').text(" ");
+        $('main-controls .play-pause').html(playerBarPauseButton)
+        
     });
+    return albumIndex;
 });

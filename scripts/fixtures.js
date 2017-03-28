@@ -20,11 +20,11 @@ var albumMarconi = {
         year: '1909',
         albumArtUrl: 'assets/images/album_covers/20.png',
         songs: [
-            { title: 'Hello, Operator?', duration: '1:01' },
-            { title: 'Ring, ring, ring', duration: '5:01' },
-            { title: 'Fits in your pocket', duration: '3:21'},
-            { title: 'Can you hear me now?', duration: '3:14' },
-            { title: 'Wrong phone number', duration: '2:15'}
+            { title: 'Hello, Operator?', duration: '1:01', audioUrl: 'assets/music/blue' },
+            { title: 'Ring, ring, ring', duration: '5:01', audioUrl: 'assets/music/green' },
+            { title: 'Fits in your pocket', duration: '3:21', audioUrl: 'assets/music/red'},
+            { title: 'Can you hear me now?', duration: '3:14', audioUrl: 'assets/music/pink' },
+            { title: 'Wrong phone number', duration: '2:15', audioUrl: 'assets/music/magenta'}
         ]
     };
 
@@ -35,10 +35,10 @@ var albumFuzzy = {
         year: '1995',
         albumArtUrl: 'assets/images/album_covers/22.fuzzywuzzy.jpg',
         songs: [
-            { title: 'Was He?', duration: '2:11' },
-            { title: 'The Bear With No Hair', duration: '4:44' },
-            { title: 'Fuzzy Feelings', duration: '2:52'},
-            { title: 'Wuzzy, Wuzzy Worries', duration: '3:31' },
-            { title: 'Whats all the Fuzz?', duration: '2:41'}
+            { title: 'Was He?', duration: '2:11', audioUrl: 'assets/music/blue' },
+            { title: 'The Bear With No Hair', duration: '4:44', audioUrl: 'assets/music/green' },
+            { title: 'Fuzzy Feelings', duration: '2:52', audioUrl: 'assets/music/red'},
+            { title: 'Wuzzy, Wuzzy Worries', duration: '3:31', audioUrl: 'assets/music/pink' },
+            { title: 'Whats all the Fuzz?', duration: '2:41', audioUrl: 'assets/music/magenta' }
         ]
     };
