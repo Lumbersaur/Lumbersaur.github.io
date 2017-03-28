@@ -238,12 +238,7 @@ $(document).ready(function() {
         $('.currently-playing .song-name').text(" ");
         $('.currently-playing .artist-name').text(" ");
         $('.currently-playing .artist-song-mobile').text(" ");
-<<<<<<< HEAD
-        $('main-controls .play-pause').html(playerBarPauseButton)
-=======
         $playPauseButton.html(playerBarPlayButton)
->>>>>>> assignment-20-player_bar
         
     });
-    return albumIndex;
 });
